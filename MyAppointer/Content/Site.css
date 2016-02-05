@@ -1,7 +1,5 @@
 ﻿html {
-    background-color: #e2e2e2;
-    margin: 0;
-    padding: 0;
+   
 }
 
 body {
@@ -99,31 +97,23 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+   
     clear: both;
     padding-bottom: 35px;
 }
 
     .main-content {
-        background: url("../Images/accent.png") no-repeat;
+        
         padding-left: 10px;
         padding-top: 30px;
     }
 
-    .featured + .main-content {
-        background: url("../Images/heroAccent.png") no-repeat;
-    }
+   
 
 header .content-wrapper {
     padding-top: 20px; 
 }
 
-footer {
-    clear: both;
-    background-color: #e2e2e2;
-    font-size: .8em;
-    height: 100px;
-}
 
 
 /* site title
@@ -183,11 +173,12 @@ footer {
 ----------------------------------------------------------*/
 ul#menu {
     font-size: 2.3em;
-    font-weight: 600;
-    margin: 0 0 5px;
-    padding: 0;
-    text-align: right;
-    font-family:'0 Roya';
+    font-weight: 200;
+    margin-top:10px;
+    padding: 8px;
+    text-align: center;
+    float:left;
+    font-family:sans-serif;
 }
 
     ul#menu li {
@@ -198,7 +189,7 @@ ul#menu {
 
         ul#menu li a {
             background: none;
-            color: #999;
+            
             text-decoration: none;
         }
 
@@ -610,9 +601,10 @@ tr.pager td {
 
     /* login */
     #login {
-        font-size: .85em;
+        font-size: 20px;
         margin: 0 0 12px;
         text-align: center;
+        font-family:'MS Reference Sans Serif';
     }
 
         #login ul {
@@ -628,16 +620,17 @@ tr.pager td {
         }
 
         #login a {
-            background: none;
-            color: #999;
-            font-weight: 600;
+           
+            
             margin: 2px;
             padding: 0;
+            font-family:'MS Reference Sans Serif';
+            background-color:white;
         }
 
-        #login a:hover {
-            color: #333;
-        }
+            #login a:hover {
+               
+            }
 
     /* menu */
     nav {
@@ -702,12 +695,12 @@ tr.pager td {
                 background: none;
             }
 
-     /* features */
-     section.feature {
+    /* features */
+    section.feature {
         float: none;
         padding: 10px;
         width: auto;
-     }
+    }
 
         section.feature img {
             color: #999;
@@ -756,4 +749,8 @@ tr.pager td {
         footer p {
             margin: 0;
         }
+}
+#searchbar
+{
+    margin:100px 300px;
 }

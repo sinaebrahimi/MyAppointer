@@ -241,6 +241,42 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\animate.min.css" />
+    <Content Include="Content\css\bootstrap-tour.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\chosen.css" />
+    <Content Include="Content\css\colorbox.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\elfinder.min.css" />
+    <Content Include="Content\css\elfinder.theme.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\jquery.noty.css" />
+    <Content Include="Content\css\uploadify.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\lato-bold-webfont.svg" />
+    <Content Include="Content\fonts\lato-light-webfont.svg" />
+    <Content Include="Content\fonts\lato-medium-webfont.svg" />
+    <Content Include="Content\fonts\lato-regular-webfont.svg" />
+    <Content Include="Content\images\333.jpg" />
+    <Content Include="Content\images\444.jpg" />
+    <Content Include="Content\images\555.jpg" />
+    <Content Include="Content\images\access-80x80.png" />
+    <Content Include="Content\images\client1.png" />
+    <Content Include="Content\images\client2.png" />
+    <Content Include="Content\images\client3.png" />
+    <Content Include="Content\images\client4.png" />
+    <Content Include="Content\images\client5.png" />
+    <Content Include="Content\images\client8.png" />
+    <Content Include="Content\images\clockbg.jpg" />
+    <Content Include="Content\images\clocklanding.jpg" />
+    <Content Include="Content\images\default_user_icon.png" />
+    <Content Include="Content\images\favicon.ico" />
+    <Content Include="Content\images\fit-80x80.png" />
+    <Content Include="Content\images\images %281%29.jpg" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\referrals-80x80.png" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -314,12 +350,40 @@
       <DependentUpon>MyAppointer.edmx</DependentUpon>
       <LastGenOutput>MyAppointer.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\lato-bold-webfont.eot" />
+    <Content Include="Content\fonts\lato-bold-webfont.ttf" />
+    <Content Include="Content\fonts\lato-bold-webfont.woff" />
+    <Content Include="Content\fonts\lato-bold-webfont.woff2" />
+    <Content Include="Content\fonts\lato-light-webfont.eot" />
+    <Content Include="Content\fonts\lato-light-webfont.ttf" />
+    <Content Include="Content\fonts\lato-light-webfont.woff" />
+    <Content Include="Content\fonts\lato-light-webfont.woff2" />
+    <Content Include="Content\fonts\lato-medium-webfont.eot" />
+    <Content Include="Content\fonts\lato-medium-webfont.ttf" />
+    <Content Include="Content\fonts\lato-medium-webfont.woff" />
+    <Content Include="Content\fonts\lato-medium-webfont.woff2" />
+    <Content Include="Content\fonts\lato-regular-webfont.eot" />
+    <Content Include="Content\fonts\lato-regular-webfont.ttf" />
+    <Content Include="Content\fonts\lato-regular-webfont.woff" />
+    <Content Include="Content\fonts\lato-regular-webfont.woff2" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <None Include="Scripts\jquery-1.8.2-vsdoc.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.colorbox-min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -329,6 +393,8 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\PersianDatePicker.js" />
+    <Content Include="Scripts\PersianDatePicker.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -336,7 +402,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
