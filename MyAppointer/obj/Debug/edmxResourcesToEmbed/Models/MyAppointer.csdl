@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyAppointerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Appointments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookDate" Type="Int32" Nullable="false" />
+    <Property Name="StartTime" Type="Int32" Nullable="false" />
+    <Property Name="EndTime" Type="Int32" Nullable="false" />
+    <Property Name="JobOwnerId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="isReserved" Type="Boolean" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="JobOwners" Relationship="Self.FK_Appointments_JobOwners" FromRole="Appointments" ToRole="JobOwners" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Appointments_Users" FromRole="Appointments" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="JobOwners">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="JobId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_JobOwners" FromRole="JobOwners" ToRole="Appointments" />
+    <NavigationProperty Name="Jobs" Relationship="Self.FK_JobOwners_Jobs" FromRole="JobOwners" ToRole="Jobs" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_JobOwners_Users" FromRole="JobOwners" ToRole="Users" />
+    <NavigationProperty Name="Services" Relationship="Self.FK_Services_JobOwners" FromRole="JobOwners" ToRole="Services" />
+    <NavigationProperty Name="WorkingTimes" Relationship="Self.FK_WorkingTimes_JobOwners" FromRole="JobOwners" ToRole="WorkingTimes" />
+  </EntityType>
+  <EntityType Name="Jobs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="JobPhone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="About" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="JobTypeId" Type="Int32" Nullable="false" />
+    <Property Name="FirstJobOwner" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="JobOwners" Relationship="Self.FK_JobOwners_Jobs" FromRole="Jobs" ToRole="JobOwners" />
+    <NavigationProperty Name="JobTypes" Relationship="Self.FK_Jobs_JobTypes" FromRole="Jobs" ToRole="JobTypes" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Jobs_Users" FromRole="Jobs" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="JobTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Jobs" Relationship="Self.FK_Jobs_JobTypes" FromRole="JobTypes" ToRole="Jobs" />
+  </EntityType>
+  <EntityType Name="OffDays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkingTimesId" Type="Int32" Nullable="false" />
+    <Property Name="OffDay" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WorkingTimes" Relationship="Self.FK_OffDays_WorkingTimes" FromRole="OffDays" ToRole="WorkingTimes" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobOwnerId" Type="Int32" Nullable="false" />
+    <Property Name="Duration" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="JobOwners" Relationship="Self.FK_Services_JobOwners" FromRole="Services" ToRole="JobOwners" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="About" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Users" FromRole="Users" ToRole="Appointments" />
+    <NavigationProperty Name="JobOwners" Relationship="Self.FK_JobOwners_Users" FromRole="Users" ToRole="JobOwners" />
+    <NavigationProperty Name="Jobs" Relationship="Self.FK_Jobs_Users" FromRole="Users" ToRole="Jobs" />
+  </EntityType>
+  <EntityType Name="WeeklyWorkingDays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Day" Type="Int32" Nullable="false" />
+    <Property Name="WorkingTimesId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WorkingTimes" Relationship="Self.FK_WeeklyWorkingDays_WorkingTimes" FromRole="WeeklyWorkingDays" ToRole="WorkingTimes" />
+  </EntityType>
+  <EntityType Name="WeeklyWorkingTimes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartTime" Type="Int32" Nullable="false" />
+    <Property Name="EndTime" Type="Int32" Nullable="false" />
+    <Property Name="WorkingTimesId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WorkingTimes" Relationship="Self.FK_WeeklyWorkingTimes_WorkingTimes" FromRole="WeeklyWorkingTimes" ToRole="WorkingTimes" />
+  </EntityType>
+  <EntityType Name="WorkingTimes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobOwnerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="JobOwners" Relationship="Self.FK_WorkingTimes_JobOwners" FromRole="WorkingTimes" ToRole="JobOwners" />
+    <NavigationProperty Name="OffDays" Relationship="Self.FK_OffDays_WorkingTimes" FromRole="WorkingTimes" ToRole="OffDays" />
+    <NavigationProperty Name="WeeklyWorkingDays" Relationship="Self.FK_WeeklyWorkingDays_WorkingTimes" FromRole="WorkingTimes" ToRole="WeeklyWorkingDays" />
+    <NavigationProperty Name="WeeklyWorkingTimes" Relationship="Self.FK_WeeklyWorkingTimes_WorkingTimes" FromRole="WorkingTimes" ToRole="WeeklyWorkingTimes" />
+  </EntityType>
+  <Association Name="FK_Appointments_JobOwners">
+    <End Role="JobOwners" Type="Self.JobOwners" Multiplicity="1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobOwners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="JobOwnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appointments_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Self.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobOwners_Jobs">
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="1" />
+    <End Role="JobOwners" Type="Self.JobOwners" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobOwners">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobOwners_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="JobOwners" Type="Self.JobOwners" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobOwners">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Services_JobOwners">
+    <End Role="JobOwners" Type="Self.JobOwners" Multiplicity="1" />
+    <End Role="Services" Type="Self.Services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobOwners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Services">
+        <PropertyRef Name="JobOwnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkingTimes_JobOwners">
+    <End Role="JobOwners" Type="Self.JobOwners" Multiplicity="1" />
+    <End Role="WorkingTimes" Type="Self.WorkingTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobOwners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkingTimes">
+        <PropertyRef Name="JobOwnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_JobTypes">
+    <End Role="JobTypes" Type="Self.JobTypes" Multiplicity="1" />
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Jobs">
+        <PropertyRef Name="JobTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Jobs">
+        <PropertyRef Name="FirstJobOwner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OffDays_WorkingTimes">
+    <End Role="WorkingTimes" Type="Self.WorkingTimes" Multiplicity="1" />
+    <End Role="OffDays" Type="Self.OffDays" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkingTimes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OffDays">
+        <PropertyRef Name="WorkingTimesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WeeklyWorkingDays_WorkingTimes">
+    <End Role="WorkingTimes" Type="Self.WorkingTimes" Multiplicity="1" />
+    <End Role="WeeklyWorkingDays" Type="Self.WeeklyWorkingDays" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkingTimes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WeeklyWorkingDays">
+        <PropertyRef Name="WorkingTimesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WeeklyWorkingTimes_WorkingTimes">
+    <End Role="WorkingTimes" Type="Self.WorkingTimes" Multiplicity="1" />
+    <End Role="WeeklyWorkingTimes" Type="Self.WeeklyWorkingTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkingTimes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WeeklyWorkingTimes">
+        <PropertyRef Name="WorkingTimesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyAppointerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointments" EntityType="Self.Appointments" />
+    <EntitySet Name="JobOwners" EntityType="Self.JobOwners" />
+    <EntitySet Name="Jobs" EntityType="Self.Jobs" />
+    <EntitySet Name="JobTypes" EntityType="Self.JobTypes" />
+    <EntitySet Name="OffDays" EntityType="Self.OffDays" />
+    <EntitySet Name="Services" EntityType="Self.Services" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="WeeklyWorkingDays" EntityType="Self.WeeklyWorkingDays" />
+    <EntitySet Name="WeeklyWorkingTimes" EntityType="Self.WeeklyWorkingTimes" />
+    <EntitySet Name="WorkingTimes" EntityType="Self.WorkingTimes" />
+    <AssociationSet Name="FK_Appointments_JobOwners" Association="Self.FK_Appointments_JobOwners">
+      <End Role="JobOwners" EntitySet="JobOwners" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appointments_Users" Association="Self.FK_Appointments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobOwners_Jobs" Association="Self.FK_JobOwners_Jobs">
+      <End Role="Jobs" EntitySet="Jobs" />
+      <End Role="JobOwners" EntitySet="JobOwners" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobOwners_Users" Association="Self.FK_JobOwners_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="JobOwners" EntitySet="JobOwners" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Services_JobOwners" Association="Self.FK_Services_JobOwners">
+      <End Role="JobOwners" EntitySet="JobOwners" />
+      <End Role="Services" EntitySet="Services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkingTimes_JobOwners" Association="Self.FK_WorkingTimes_JobOwners">
+      <End Role="JobOwners" EntitySet="JobOwners" />
+      <End Role="WorkingTimes" EntitySet="WorkingTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_JobTypes" Association="Self.FK_Jobs_JobTypes">
+      <End Role="JobTypes" EntitySet="JobTypes" />
+      <End Role="Jobs" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_Users" Association="Self.FK_Jobs_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Jobs" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OffDays_WorkingTimes" Association="Self.FK_OffDays_WorkingTimes">
+      <End Role="WorkingTimes" EntitySet="WorkingTimes" />
+      <End Role="OffDays" EntitySet="OffDays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WeeklyWorkingDays_WorkingTimes" Association="Self.FK_WeeklyWorkingDays_WorkingTimes">
+      <End Role="WorkingTimes" EntitySet="WorkingTimes" />
+      <End Role="WeeklyWorkingDays" EntitySet="WeeklyWorkingDays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WeeklyWorkingTimes_WorkingTimes" Association="Self.FK_WeeklyWorkingTimes_WorkingTimes">
+      <End Role="WorkingTimes" EntitySet="WorkingTimes" />
+      <End Role="WeeklyWorkingTimes" EntitySet="WeeklyWorkingTimes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
