@@ -58,7 +58,7 @@ namespace MyAppointer.Controllers
             if (ModelState.IsValid)
             {
                 db.Jobs.Add(jobs);
-                db.SaveChanges();
+                db.SaveChanges();//save
                 return RedirectToAction("Index", "Home");
             }
 
